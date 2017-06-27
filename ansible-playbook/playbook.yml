@@ -1,0 +1,187 @@
+---
+- hosts: all
+
+  vars:
+    brew_taps:
+      - caskroom/cask
+      - caskroom/fonts
+
+    brew_pkgs:
+      - ansible
+      - mas
+      - vim
+      - wget
+      - hugo
+      - awscli
+      # shell utilities
+      - fish
+      - fzf
+      - peco
+      - direnv
+      - ag
+      # git-related tools
+      - ghq
+      - hub
+      - tig
+      # for python
+      - pyenv
+      # for golang
+      - go
+      # for nodejs
+      - nodebrew
+
+    brew_cask_pkgs:
+      - alfred
+      - 1password
+      - google-japanese-ime
+      - google-trends
+      # Internet
+      - google-chrome
+      # Messaging
+      - franz
+      # Cloud drive
+      - google-drive
+      - dropbox
+      # for developing
+      - iterm2
+      - atom
+      - dash
+      - intellij-idea-ce
+      - vagrant
+      - virtualbox
+      - docker
+      # Photos
+      - skitch
+      - adobe-creative-cloud
+      - google-nik-collection
+      - google-photos-backup
+      # QuickLook
+      - qlcolorcode
+      - qlimagesize
+      - qlmarkdown
+      - qlstephen
+      # Font
+      - font-source-code-pro-for-powerline
+
+    pyenv_versions:
+      - 3.6.1
+      - anaconda3-4.4.0
+
+    pip_global_pkgs:
+      - rainbowstream
+      - yapf
+      - ipython
+
+    mas_pkgs:
+      - {id: 408981434 , name: iMovie }
+      - {id: 409183694 , name: Keynote }
+      - {id: 409201541 , name: Pages }
+      - {id: 409203825 , name: Numbers }
+      - {id: 497799835 , name: Xcode }
+      - {id: 539883307 , name: LINE }
+      - {id: 568494494 , name: Pocket }
+      - {id: 585829637 , name: Todoist }
+      - {id: 682658836 , name: GarageBand }
+      - {id: 766939888 , name: 1Keyboard }
+      - {id: 865500966 , name: Feedly }
+      - {id: 918858936 , name: Airmail 3 }
+      - {id: 946680495 , name: MARKETSPEED }
+      - {id: 1029784963, name: LINE WORKS }
+
+    apm_pkgs:
+      - atom-beautify
+      - file-icons
+      - autocomplete-paths
+      - smart-tab-name
+      - show-ideographic-space
+      - firacode
+      - fonts
+      - multi-cursor
+      # CSS
+      - pigments
+      # Python
+      - python-yapf
+
+    fisher_plugins:
+      - z
+      - fzf
+
+  tasks:
+
+    - name: Check Homebrew is installed
+      stat: path=/usr/local/bin/brew
+      register: brew_installed
+
+    - name: Install Homebrew
+      shell: ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"
+      when: brew_installed.stat.exists == false
+
+    # Brew tap
+    - name: Instal required Homebrew Taps
+      homebrew_tap: name={{ item }} state=present
+      with_items: "{{ brew_taps }}"
+
+    # Install cmd tool pkgs via brew
+    - name: Install packages
+      homebrew: name={{ item }} state=present
+      with_items: "{{ brew_pkgs }}"
+
+    - name: Cleanup brewed old pkgs
+      shell: brew cleanup
+
+    # Install apps via brew cask
+    - name: Install apps
+      homebrew_cask: name={{ item }} state=present
+      with_items: "{{ brew_cask_pkgs }}"
+
+    # Mac app store application via mas
+    - name: Install Mac app store apps via mas
+      mas: id={{ item.id }} state=latest
+      with_items: "{{ mas_pkgs }}"
+
+    # apm
+    - name: Install Atom packages via apm
+      apm: name={{ item }} state=present
+      with_items: "{{ apm_pkgs }}"
+
+    # fish
+    - name: Check fish shell is already installed as standard shell
+      shell: cat /etc/shells | grep /usr/local/bin/fish | wc -l | tr -d '[:blank:]'
+      register: fish_shell_count
+
+    - name: Add fish shell as standard shell if not placed
+      shell: echo '/usr/local/bin/fish' >> /etc/shells
+      when: fish_shell_count.stdout == "0"
+      become: yes
+
+    - name: Set fish shell on okdtsk user
+      user: name=okdtsk shell=/usr/local/bin/fish
+
+    - name: Check fisherman is installed
+      stat: path=~/.config/fish/functions/fisher.fish
+      register: fisherman_installed
+
+    - name: Install fisherman
+      shell: curl -Lo ~/.config/fish/functions/fisher.fish --create-dirs https://git.io/fisher
+      when: fisherman_installed.stat.exists == false
+
+    - name: Copy config.fish
+      copy: src=config.fish dest=~/.config/fish/config.fish
+
+    # Python global
+    # - name: Set shims path into PATH  # set export PATH=$(pyenv root)/shims:$PATH
+
+    - name: Check pyenv versions
+      shell: pyenv versions | grep {{ item }}
+      register: installed_pyenv_version
+      with_items: "{{ pyenv_versions }}"
+      ignore_errors: yes
+
+    - name: Install python via pyenv
+      shell: pyenv install -s {{ item.item }}
+      when: item.rc != 0
+      with_items: "{{ installed_pyenv_version.results }}"
+
+    - name: Install python pkgs via pip
+      pip: name={{ item }} state=present
+      with_items: "{{ pip_global_pkgs }}"
