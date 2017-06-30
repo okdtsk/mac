@@ -1,5 +1,7 @@
 set -U fish_user_paths $HOME/bin $fish_user_paths
 
+source ~/.config/fish/iterm2_shell_integration.fish
+
 set -x EDITOR /usr/local/bin/vim
 eval (direnv hook fish)
 
