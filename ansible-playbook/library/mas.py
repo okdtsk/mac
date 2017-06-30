@@ -33,6 +33,7 @@ def main():
 class MAS(object):
 
     RE_LIST = re.compile(r'(?P<app_id>\d+) (?P<app_name>.+) \((?P<app_version>[0-9.]+)\)')
+    RE_OUTDATED = re.compile(r'(?P<app_id>\d+) (?P<app_name>.+) \((?P<app_version>[0-9.]+) -> (?P<app_version_latest>[0-9.]+)\)')
 
     def __init__(self, module):
         self.module = module
@@ -45,7 +46,7 @@ class MAS(object):
         ]))
 
     def get_outdated_packages(self):
-        return self.__convert_mas_list_to_dict(self.__run_stdout([
+        return self.__convert_mas_outdated_to_dict(self.__run_stdout([
             'mas', 'outdated'
         ]))
 
@@ -89,6 +90,9 @@ class MAS(object):
         return {d['app_id']: d for d in [self.RE_LIST.match(pkg).groupdict()
                                          for pkg in list_output.strip().splitlines()]}
 
+    def __convert_mas_outdated_to_dict(self, list_output):
+        return {d['app_id']: d for d in [self.RE_OUTDATED.match(pkg).groupdict()
+                                         for pkg in list_output.strip().splitlines()]}
 
 if __name__ == '__main__':
   main()
