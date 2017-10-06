@@ -64,7 +64,7 @@
       - font-source-code-pro-for-powerline
 
     pyenv_versions:
-      - 3.6.1
+      - 3.6.3
       - anaconda3-4.4.0
 
     pip_global_pkgs:
