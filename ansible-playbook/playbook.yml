@@ -19,6 +19,7 @@
       - peco
       - direnv
       - ag
+      - terminal-notifier
       # git-related tools
       - ghq
       - hub
@@ -103,8 +104,19 @@
       - python-yapf
 
     fisher_plugins:
-      - z
+      - anicode
+      - ansible-completion
+      - bass
+      - docker-completion
+      - done
       - fzf
+      - imgcat
+      - pyenv
+      - upto
+      - vault
+      - z
+      - omf/peco
+      - omf/theme-bobthefish
 
   tasks:
 
