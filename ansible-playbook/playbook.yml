@@ -40,7 +40,7 @@
       # Messaging
       - franz
       # Cloud drive
-      - google-drive
+      - google-backup-and-sync
       - dropbox
       # for developing
       - iterm2
@@ -54,7 +54,7 @@
       - skitch
       - adobe-creative-cloud
       - google-nik-collection
-      - google-photos-backup
+      - google-photos-backup-and-sync
       # QuickLook
       - qlcolorcode
       - qlimagesize
