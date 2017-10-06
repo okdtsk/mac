@@ -160,6 +160,10 @@
       shell: curl -Lo ~/.config/fish/functions/fisher.fish --create-dirs https://git.io/fisher
       when: fisherman_installed.stat.exists == false
 
+    - name: Install fish plugins via fisher
+      fisher: name={{ item }} state=present
+      with_items: "{{ fisher_plugins }}"
+
     - name: Copy config.fish
       copy: src=config.fish dest=~/.config/fish/config.fish
 

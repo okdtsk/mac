@@ -45,7 +45,7 @@ class Fisher(object):
         self.state = module.params['state']
 
     def get_installed_packages(self, links=False):
-        return self.__run_stdout(['fisher', 'ls', '-l'])
+        return self.__run_stdout('fisher ls -l')
 
     def get_installed_version(self):
         return self.name in self.get_installed_packages()
@@ -60,16 +60,16 @@ class Fisher(object):
         return self.state == 'absent' and self.is_installed()
 
     def install(self):
-        assert self.__run(['fisher', 'install', self.name]) == 0
+        assert self.__run('fisher install {}'.format(self.name)) == 0
 
     def upgrade(self):
-        assert self.__run(['fisher', 'update', self.name]) == 0
+        assert self.__run('fisher update {}'.format(self.name)) == 0
 
     def uninstall(self):
-        assert self.__run(['fisher', 'rm', self.name]) == 0
+        assert self.__run('fisher rm {}'.format(self.name)) == 0
 
     def is_valid_package(self):
-        return self.__run(['fisher', 'ls-remote', self.name]) == 0
+        return self.__run('fisher ls-remote {}'.format(self.name)) == 0
 
     def is_installed(self):
         return self.name in self.get_installed_packages()
@@ -78,13 +78,16 @@ class Fisher(object):
         return False  # Currently we cannot fetch latest version num via fisher
 
     def __run(self, cmd):
-        rc, stdout, stderr = self.module.run_command(cmd)
+        rc, stdout, stderr = self.__run_as_fish(cmd)
         return rc
 
     def __run_stdout(self, cmd):
-        rc, stdout, stderr = self.module.run_command(cmd)
+        rc, stdout, stderr = self.__run_as_fish(cmd)
         assert rc == 0
         return stdout
+
+    def __run_as_fish(self, cmd):
+        return self.module.run_command(['fish', '-c', cmd])
 
 
 if __name__ == '__main__':
