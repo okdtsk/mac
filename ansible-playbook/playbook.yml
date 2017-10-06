@@ -5,6 +5,7 @@
     brew_taps:
       - caskroom/cask
       - caskroom/fonts
+      - caskroom/versions
 
     brew_pkgs:
       - ansible
@@ -30,8 +31,13 @@
       - go
       # for nodejs
       - nodebrew
+      # for java
+      - gradle
+      - maven
 
     brew_cask_pkgs:
+      - java
+      - java8
       - alfred
       - 1password
       - google-japanese-ime
