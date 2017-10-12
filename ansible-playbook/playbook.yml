@@ -21,6 +21,7 @@
       - direnv
       - ag
       - terminal-notifier
+      - watch
       # git-related tools
       - ghq
       - hub
@@ -34,6 +35,9 @@
       # for java
       - gradle
       - maven
+      # for kotlin
+      - kotlin
+      - shyiko/ktlint/ktlint
 
     brew_cask_pkgs:
       - java
@@ -43,6 +47,7 @@
       - google-japanese-ime
       - google-trends
       - spotify
+      - istat-menus
       # Internet
       - google-chrome
       # Messaging
@@ -58,6 +63,7 @@
       - vagrant
       - virtualbox
       - docker
+      - gitify
       # Photos
       - skitch
       - adobe-creative-cloud
