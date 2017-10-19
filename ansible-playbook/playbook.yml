@@ -14,6 +14,7 @@
       - wget
       - hugo
       - awscli
+      - jq
       # shell utilities
       - fish
       - fzf
