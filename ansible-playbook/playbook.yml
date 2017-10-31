@@ -49,6 +49,7 @@
       - google-trends
       - spotify
       - istat-menus5
+      - flux
       # Internet
       - google-chrome
       # Messaging
@@ -100,6 +101,7 @@
       - {id: 918858936 , name: Airmail 3 }
       - {id: 946680495 , name: MARKETSPEED }
       - {id: 1029784963, name: LINE WORKS }
+      - {id: 1091189122, name: Bear }
 
     apm_pkgs:
       - atom-beautify
