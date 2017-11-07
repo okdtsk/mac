@@ -44,7 +44,6 @@
       - java
       - java8
       - alfred
-      - 1password
       - google-japanese-ime
       - google-trends
       - spotify
@@ -91,6 +90,7 @@
       - {id: 409183694 , name: Keynote }
       - {id: 409201541 , name: Pages }
       - {id: 409203825 , name: Numbers }
+      - {id: 443987910 , name: 1Password }
       - {id: 497799835 , name: Xcode }
       - {id: 539883307 , name: LINE }
       - {id: 568494494 , name: Pocket }
@@ -100,7 +100,6 @@
       - {id: 865500966 , name: Feedly }
       - {id: 918858936 , name: Airmail 3 }
       - {id: 946680495 , name: MARKETSPEED }
-      - {id: 1029784963, name: LINE WORKS }
       - {id: 1091189122, name: Bear }
 
     apm_pkgs:
@@ -112,6 +111,8 @@
       - firacode
       - fonts
       - multi-cursor
+      - git-plus
+      - git-log
       # CSS
       - pigments
       # Python
