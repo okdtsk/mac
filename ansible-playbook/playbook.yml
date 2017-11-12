@@ -1,140 +1,11 @@
 ---
 - hosts: all
+  connection: local
 
-  vars:
-    brew_taps:
-      - caskroom/cask
-      - caskroom/fonts
-      - caskroom/versions
-
-    brew_pkgs:
-      - ansible
-      - mas
-      - vim
-      - wget
-      - hugo
-      - awscli
-      - jq
-      # shell utilities
-      - fish
-      - fzf
-      - peco
-      - direnv
-      - ag
-      - terminal-notifier
-      - watch
-      # git-related tools
-      - ghq
-      - hub
-      - tig
-      # for python
-      - pyenv
-      # for golang
-      - go
-      # for nodejs
-      - nodebrew
-      # for java
-      - gradle
-      - maven
-      # for kotlin
-      - kotlin
-      - shyiko/ktlint/ktlint
-
-    brew_cask_pkgs:
-      - java
-      - java8
-      - alfred
-      - google-japanese-ime
-      - google-trends
-      - spotify
-      - istat-menus5
-      - flux
-      # Internet
-      - google-chrome
-      # Messaging
-      - franz
-      # Cloud drive
-      - google-backup-and-sync
-      - dropbox
-      # for developing
-      - iterm2
-      - atom
-      - dash
-      - vagrant
-      - virtualbox
-      - docker
-      - gitify
-      # Photos
-      - skitch
-      - adobe-creative-cloud
-      - google-nik-collection
-      # QuickLook
-      - qlcolorcode
-      - qlimagesize
-      - qlmarkdown
-      - qlstephen
-      # Font
-      - font-source-code-pro-for-powerline
-
-    pyenv_versions:
-      - 3.6.3
-      - anaconda3-4.4.0
-
-    pip_global_pkgs:
-      - rainbowstream
-      - yapf
-      - ipython
-
-    mas_pkgs:
-      - {id: 408981434 , name: iMovie }
-      - {id: 409183694 , name: Keynote }
-      - {id: 409201541 , name: Pages }
-      - {id: 409203825 , name: Numbers }
-      - {id: 443987910 , name: 1Password }
-      - {id: 497799835 , name: Xcode }
-      - {id: 539883307 , name: LINE }
-      - {id: 568494494 , name: Pocket }
-      - {id: 585829637 , name: Todoist }
-      - {id: 682658836 , name: GarageBand }
-      - {id: 766939888 , name: 1Keyboard }
-      - {id: 865500966 , name: Feedly }
-      - {id: 918858936 , name: Airmail 3 }
-      - {id: 946680495 , name: MARKETSPEED }
-      - {id: 1091189122, name: Bear }
-
-    apm_pkgs:
-      - atom-beautify
-      - file-icons
-      - autocomplete-paths
-      - smart-tab-name
-      - show-ideographic-space
-      - firacode
-      - fonts
-      - multi-cursor
-      - git-plus
-      - git-log
-      # CSS
-      - pigments
-      # Python
-      - python-yapf
-
-    fisher_plugins:
-      - anicode
-      - ansible-completion
-      - bass
-      - docker-completion
-      - done
-      - fzf
-      - imgcat
-      - pyenv
-      - upto
-      - vault
-      - z
-      - omf/peco
-      - omf/theme-bobthefish
+  vars_files:
+    - vars.yml
 
   tasks:
-
     - name: Check Homebrew is installed
       stat: path=/usr/local/bin/brew
       register: brew_installed
@@ -163,7 +34,7 @@
 
     # Mac app store application via mas
     - name: Install Mac app store apps via mas
-      mas: id={{ item.id }} state=latest
+      mas: id={{ item.id }} state=present
       with_items: "{{ mas_pkgs }}"
 
     # apm
