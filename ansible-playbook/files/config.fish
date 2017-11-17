@@ -9,9 +9,9 @@ complete --command aws --no-files --arguments '(begin; set --local --export COMP
 
 function gcd
     if count $argv > /dev/null
-        set path (find (ghq root) -type d -d 3 | fzf -1 -q $argv)
+        set path (ghq list --full-path | fzf -1 -q $argv)
     else
-        set path (find (ghq root) -type d -d 3 | fzf -1)
+        set path (ghq list --full-path | fzf -1)
     end
     cd $path
 end
