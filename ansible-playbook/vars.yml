@@ -81,6 +81,7 @@ pip_global_pkgs:
   - rainbowstream
   - yapf
   - ipython
+  - virtualenv
 
 mas_pkgs:
   - {id: 408981434 , name: iMovie }
