@@ -26,6 +26,7 @@ brew_pkgs:
   - tig
   # for python
   - pyenv
+  - flake8
   # for golang
   - go
   # for nodejs
@@ -113,10 +114,20 @@ apm_pkgs:
   - multi-cursor
   - git-plus
   - git-log
+  - script
+  - linter
+  - linter-ui-default
+  - intentions  # for linter-flake8
+  - busy-signal  # for linter-flake8
+  - emmet
   # CSS
   - pigments
   # Python
   - python-yapf
+  - autocomplete-python
+  - kite
+  - magicpython
+  - linter-flake8
 
 fisher_plugins:
   - anicode
