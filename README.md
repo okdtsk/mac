@@ -1,0 +1,3 @@
+- Conductr server https://www.conductr.net/downloads/
+- touchAble http://www.touch-able.com/
+- Waves Central http://www.waves.com/downloads/central

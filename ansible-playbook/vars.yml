@@ -12,6 +12,8 @@ brew_pkgs:
   - hugo
   - awscli
   - jq
+  - elinks
+  - certbot
   # shell utilities
   - fish
   - fzf
@@ -47,6 +49,7 @@ brew_cask_pkgs:
   - spotify
   - istat-menus5
   - flux
+  - authy
   # Internet
   - google-chrome
   # Messaging
@@ -77,6 +80,9 @@ brew_cask_pkgs:
 pyenv_versions:
   - 3.6.3
   - anaconda3-4.4.0
+
+nodebrew_versions:
+  - v9.2.0
 
 pip_global_pkgs:
   - rainbowstream
@@ -119,20 +125,25 @@ apm_pkgs:
   - linter-ui-default
   - intentions  # for linter-flake8
   - busy-signal  # for linter-flake8
-  - emmet
-  # CSS
-  - pigments
   # Python
   - python-yapf
   - autocomplete-python
   - kite
   - magicpython
   - linter-flake8
+  # -- Forntend
+  - emmet
+  # ES2015
+  - linter-eslint
+  - language-babel
+  # CSS
+  - pigments
+  - linter-sass-lint
 
 fisher_plugins:
   - anicode
   - ansible-completion
-  - bass
+  - edc/bass
   - docker-completion
   - done
   - fzf

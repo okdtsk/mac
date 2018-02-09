@@ -83,4 +83,4 @@
       pip: name={{ item }} state=present
       with_items: "{{ pip_global_pkgs }}"
 
-- include: playbook-each-environment.yml
+- import_playbook: playbook-each-environment.yml
