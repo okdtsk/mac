@@ -18,7 +18,7 @@ function gcd
     cd $path
 end
 
-set -x GOPATH ${HOME}/go
+set -x GOPATH HOME/go
 
-set -x PATH ${PATH} ${GOPATH}/bin
+set -x PATH PATH GOPATH/bin
 
