@@ -5,84 +5,63 @@ brew_taps:
   - caskroom/versions
 
 brew_pkgs:
-  - ansible
-  - mas
-  - vim
-  - wget
-  - hugo
-  - awscli
-  - jq
-  - elinks
-  - certbot
-  # shell utilities
-  - fish
-  - fzf
-  - peco
-  - direnv
   - ag
-  - terminal-notifier
-  - watch
-  # git-related tools
-  - ghq
-  - hub
-  - tig
-  # for python
-  - pyenv
+  - ansible
+  - awscli
+  - certbot
+  - direnv
+  - elinks
+  - fish
   - flake8
-  # for golang
+  - fzf
+  - ghq
   - go
-  # for nodejs
-  - nodebrew
-  # for java
   - gradle
-  - maven
-  # for kotlin
+  - hub
+  - hugo
+  - jq
   - kotlin
+  - mas
+  - maven
+  - nodebrew
+  - peco
+  - pyenv
   - shyiko/ktlint/ktlint
+  - terminal-notifier
+  - tig
+  - vim
+  - watch
+  - wget
 
 brew_cask_pkgs:
+  - adobe-creative-cloud
+  - alfred
+  - atom
+  - authy
+  - dash
+  - docker
+  - dropbox
+  - flux
+  - font-source-code-pro-for-powerline
+  - franz
+  - gitify
+  - google-backup-and-sync
+  - google-chrome
+  - google-japanese-ime
+  - google-nik-collection
+  - google-trends
+  - istat-menus5
+  - iterm2
   - java
   - java8
-  - alfred
-  - google-japanese-ime
-  - google-trends
-  - spotify
-  - istat-menus5
-  - flux
-  - authy
-  # Internet
-  - google-chrome
-  # Messaging
-  - franz
-  # Cloud drive
-  - google-backup-and-sync
-  - dropbox
-  # for developing
-  - iterm2
-  - atom
-  - dash
-  - vagrant
-  - virtualbox
-  - docker
-  - gitify
-  # Photos
-  - skitch
-  - adobe-creative-cloud
-  - google-nik-collection
-  # QuickLook
   - qlcolorcode
   - qlimagesize
   - qlmarkdown
   - qlstephen
-  # Font
-  - font-source-code-pro-for-powerline
-
-pyenv_versions:
-  - 3.6.3
-  - anaconda3-4.4.0
-
-nodebrew_versions:
-  - v9.2.0
+  - skitch
+  - spotify
+  - vagrant
+  - virtualbox
 
 pip_global_pkgs:
   - rainbowstream
@@ -111,46 +90,40 @@ mas_pkgs:
 
 apm_pkgs:
   - atom-beautify
-  - file-icons
   - autocomplete-paths
-  - smart-tab-name
-  - show-ideographic-space
+  - autocomplete-python
+  - emmet
+  - file-icons
   - firacode
   - fonts
-  - multi-cursor
-  - git-plus
   - git-log
-  - script
-  - linter
-  - linter-ui-default
-  - intentions  # for linter-flake8
-  - busy-signal  # for linter-flake8
-  # Python
-  - python-yapf
-  - autocomplete-python
+  - git-plus
   - kite
-  - magicpython
-  - linter-flake8
-  # -- Forntend
-  - emmet
-  # ES2015
-  - linter-eslint
   - language-babel
-  # CSS
-  - pigments
+  - linter
+  - linter-eslint
+  - linter-flake8
   - linter-sass-lint
+  - linter-ui-default
+  - magicpython
+  - multi-cursor
+  - pigments
+  - python-yapf
+  - script
+  - show-ideographic-space
+  - smart-tab-name
 
 fisher_plugins:
   - anicode
   - ansible-completion
-  - edc/bass
   - docker-completion
   - done
+  - edc/bass
   - fzf
   - imgcat
+  - omf/peco
+  - omf/theme-bobthefish
   - pyenv
   - upto
   - vault
   - z
-  - omf/peco
-  - omf/theme-bobthefish
