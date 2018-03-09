@@ -65,22 +65,4 @@
     - name: Copy config.fish
       copy: src=config.fish dest=~/.config/fish/config.fish
 
-    # Python global
-    # - name: Set shims path into PATH  # set export PATH=$(pyenv root)/shims:$PATH
-
-    - name: Check pyenv versions
-      shell: pyenv versions | grep {{ item }}
-      register: installed_pyenv_version
-      with_items: "{{ pyenv_versions }}"
-      ignore_errors: yes
-
-    - name: Install python via pyenv
-      shell: pyenv install -s {{ item.item }}
-      when: item.rc != 0
-      with_items: "{{ installed_pyenv_version.results }}"
-
-    - name: Install python pkgs via pip
-      pip: name={{ item }} state=present
-      with_items: "{{ pip_global_pkgs }}"
-
 - import_playbook: playbook-each-environment.yml

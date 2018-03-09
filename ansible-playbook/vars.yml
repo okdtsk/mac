@@ -7,6 +7,7 @@ brew_taps:
 brew_pkgs:
   - ag
   - ansible
+  - asdf
   - awscli
   - certbot
   - direnv
@@ -17,15 +18,14 @@ brew_pkgs:
   - ghq
   - go
   - gradle
+  - httpie
   - hub
   - hugo
   - jq
   - kotlin
   - mas
   - maven
-  - nodebrew
   - peco
-  - pyenv
   - shyiko/ktlint/ktlint
   - terminal-notifier
   - tig
@@ -64,10 +64,10 @@ brew_cask_pkgs:
   - virtualbox
 
 pip_global_pkgs:
-  - rainbowstream
-  - yapf
   - ipython
+  - rainbowstream
   - virtualenv
+  - yapf
 
 mas_pkgs:
   - {id: 408981434 , name: iMovie }
