@@ -1,8 +1,8 @@
 #!/usr/bin/python
 
 from ansible.module_utils.basic import AnsibleModule
-import os
 import re
+
 
 def main():
     module = AnsibleModule(
@@ -33,7 +33,8 @@ def main():
 class MAS(object):
 
     RE_LIST = re.compile(r'(?P<app_id>\d+) (?P<app_name>.+) \((?P<app_version>[0-9.]+)\)')
-    RE_OUTDATED = re.compile(r'(?P<app_id>\d+) (?P<app_name>.+) \((?P<app_version>[0-9.]+) -> (?P<app_version_latest>[0-9.]+)\)')
+    RE_OUTDATED = re.compile((r'(?P<app_id>\d+) (?P<app_name>.+) \((?P<app_version>[0-9.]+) -> '
+                              r'(?P<app_version_latest>[0-9.]+)\)'))
 
     def __init__(self, module):
         self.module = module
@@ -75,7 +76,7 @@ class MAS(object):
         return self.id in self.get_installed_packages()
 
     def is_latest_version(self):
-        return not self.id in self.get_outdated_packages()
+        return self.id not in self.get_outdated_packages()
 
     def __run(self, cmd):
         rc, stdout, stderr = self.module.run_command(cmd)
@@ -94,5 +95,6 @@ class MAS(object):
         return {d['app_id']: d for d in [self.RE_OUTDATED.match(pkg).groupdict()
                                          for pkg in list_output.strip().splitlines()]}
 
+
 if __name__ == '__main__':
-  main()
+    main()

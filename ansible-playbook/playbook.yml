@@ -7,7 +7,8 @@
 
   tasks:
     - name: Check Homebrew is installed
-      stat: path=/usr/local/bin/brew
+      stat:
+        path: /usr/local/bin/brew
       register: brew_installed
 
     - name: Install Homebrew
@@ -16,12 +17,16 @@
 
     # Brew tap
     - name: Instal required Homebrew Taps
-      homebrew_tap: name={{ item }} state=present
+      homebrew_tap:
+        name: "{{ item }}"
+        state: present
       with_items: "{{ brew_taps }}"
 
     # Install cmd tool pkgs via brew
     - name: Install packages
-      homebrew: name={{ item }} state=present
+      homebrew:
+        name: "{{ item }}"
+        state: present
       with_items: "{{ brew_pkgs }}"
 
     - name: Cleanup brewed old pkgs
@@ -29,17 +34,23 @@
 
     # Install apps via brew cask
     - name: Install apps
-      homebrew_cask: name={{ item }} state=present
+      homebrew_cask:
+        name: "{{ item }}"
+        state: present
       with_items: "{{ brew_cask_pkgs }}"
 
     # Mac app store application via mas
     - name: Install Mac app store apps via mas
-      mas: id={{ item.id }} state=present
+      mas:
+        id: "{{ item.id }}"
+        state: present
       with_items: "{{ mas_pkgs }}"
 
     # apm
     - name: Install Atom packages via apm
-      apm: name={{ item }} state=present
+      apm:
+        name: "{{ item }}"
+        state: present
       with_items: "{{ apm_pkgs }}"
 
     # fish
@@ -48,10 +59,15 @@
       register: fish_shell_count
 
     - name: Download iterm2 integration fish shell
-      get_url: url=https://iterm2.com/misc/fish_startup.in dest=~/.config/fish/iterm2_shell_integration.fish mode=0664 force=yes
+      get_url:
+        url: https://iterm2.com/misc/fish_startup.in
+        dest: ~/.config/fish/iterm2_shell_integration.fish
+        mode: 0664
+        force: yes
 
     - name: Check fisherman is installed
-      stat: path=~/.config/fish/functions/fisher.fish
+      stat:
+        path: ~/.config/fish/functions/fisher.fish
       register: fisherman_installed
 
     - name: Install fisherman
@@ -59,10 +75,33 @@
       when: fisherman_installed.stat.exists == false
 
     - name: Install fish plugins via fisher
-      fisher: name={{ item }} state=present
+      fisher:
+        name: "{{ item }}"
+        state: present
       with_items: "{{ fisher_plugins }}"
 
     - name: Copy config.fish
-      copy: src=config.fish dest=~/.config/fish/config.fish
+      copy:
+        src: fish/config.fish
+        dest: ~/.config/fish/config.fish
+
+    - name: Create user define configuration dir
+      file:
+        path: ~/.config/fish/conf.user/
+        state: directory
+        mode: 0755
+
+    - name: Copy fish configs
+      copy:
+        src: "{{ item.src }}"
+        dest: "~/.config/fish/conf.user/{{ item.path }}"
+        mode: 0755
+      with_filetree: fish/conf.user/
+
+    - name: Put direnvrc
+      copy:
+        src: direnv/direnvrc
+        dest: ~/.direnvrc
+        mode: 0644
 
 - import_playbook: playbook-each-environment.yml

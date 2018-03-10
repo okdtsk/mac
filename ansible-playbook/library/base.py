@@ -4,8 +4,6 @@ from abc import ABCMeta
 from abc import abstractmethod
 import json
 
-from ansible.module_utils.basic import AnsibleModule
-
 
 class PackageManager(object):
 

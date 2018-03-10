@@ -16,6 +16,7 @@ brew_pkgs:
   - flake8
   - fzf
   - ghq
+  - gnupg
   - go
   - gradle
   - httpie
@@ -123,7 +124,6 @@ fisher_plugins:
   - imgcat
   - omf/peco
   - omf/theme-bobthefish
-  - pyenv
   - upto
   - vault
   - z
