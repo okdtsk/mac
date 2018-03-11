@@ -26,11 +26,11 @@ brew_pkgs:
   - kotlin
   - mas
   - maven
+  - neovim
   - peco
   - shyiko/ktlint/ktlint
   - terminal-notifier
   - tig
-  - vim
   - watch
   - wget
 
