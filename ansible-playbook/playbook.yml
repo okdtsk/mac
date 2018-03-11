@@ -98,10 +98,11 @@
         mode: 0755
       with_filetree: fish/conf.user/
 
-    - name: Put direnvrc
+    - name: Put dotfiles
       copy:
-        src: direnv/direnvrc
-        dest: ~/.direnvrc
+        src: "{{ item.src }}"
+        dest: "~/.{{ item.path }}"
         mode: 0644
+      with_filetree: dotfiles/
 
 - import_playbook: playbook-each-environment.yml

@@ -2,7 +2,6 @@
 brew_taps:
   - caskroom/cask
   - caskroom/fonts
-  - caskroom/versions
 
 brew_pkgs:
   - ag
@@ -10,8 +9,10 @@ brew_pkgs:
   - asdf
   - awscli
   - certbot
+  - coreutils
   - direnv
   - elinks
+  - ffmpeg
   - fish
   - flake8
   - fzf
@@ -37,9 +38,13 @@ brew_pkgs:
 brew_cask_pkgs:
   - adobe-creative-cloud
   - alfred
+  - amazon-music
+  - appcleaner
   - atom
   - authy
+  - contexts
   - dash
+  - discord
   - docker
   - dropbox
   - flux
@@ -48,21 +53,30 @@ brew_cask_pkgs:
   - gitify
   - google-backup-and-sync
   - google-chrome
+  - google-cloud-sdk
+  - google-drive
   - google-japanese-ime
   - google-nik-collection
+  - google-photos-backup
   - google-trends
   - istat-menus5
   - iterm2
   - java
   - java8
+  - ngrok
   - qlcolorcode
   - qlimagesize
   - qlmarkdown
   - qlstephen
   - skitch
+  - slack
   - spotify
+  - telegram
+  - the-unarchiver
   - vagrant
+  - vcv-rack
   - virtualbox
+  - vlc
 
 pip_global_pkgs:
   - ipython
@@ -83,7 +97,6 @@ mas_pkgs:
   - {id: 682658836 , name: GarageBand }
   - {id: 766939888 , name: 1Keyboard }
   - {id: 865500966 , name: Feedly }
-  - {id: 918858936 , name: Airmail 3 }
   - {id: 946680495 , name: MARKETSPEED }
   - {id: 1039633667, name: Irvue}
   - {id: 1055511498, name: Day One}
@@ -104,11 +117,14 @@ apm_pkgs:
   - linter
   - linter-eslint
   - linter-flake8
+  - linter-htmlhint
   - linter-sass-lint
+  - linter-shellcheck
   - linter-ui-default
   - magicpython
   - multi-cursor
   - pigments
+  - python-indent
   - python-yapf
   - script
   - show-ideographic-space
