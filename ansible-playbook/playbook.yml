@@ -99,7 +99,7 @@
       with_filetree: fish/conf.user/
 
     - name: Put dotfiles
-      copy:
+      template:
         src: "{{ item.src }}"
         dest: "~/.{{ item.path }}"
         mode: 0644

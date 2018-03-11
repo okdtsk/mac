@@ -9,6 +9,7 @@ brew_pkgs:
   - asdf
   - awscli
   - certbot
+  - chromedriver
   - coreutils
   - direnv
   - elinks
@@ -17,14 +18,13 @@ brew_pkgs:
   - flake8
   - fzf
   - ghq
+  - git
   - gnupg
-  - go
   - gradle
   - httpie
   - hub
   - hugo
   - jq
-  - kotlin
   - mas
   - maven
   - neovim

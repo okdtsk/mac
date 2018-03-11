@@ -1,0 +1,8 @@
+[user]
+	name = Tasuku Okuda
+	email = okdtsk@gmail.com
+
+[alias]
+	co = checkout
+	st = status
+	l = log --all --graph --oneline --pretty=format:'%C(auto)%h %C(blue)%ad %C(red)%d %Creset%s %C(green)<%aN>' --date=format:'%Y-%m-%d %H:%M:%S'
