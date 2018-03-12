@@ -31,7 +31,7 @@
       with_items: "{{ brew_pkgs }}"
 
     - name: Cleanup brewed old pkgs
-      shell: brew cleanup
+      shell: brew cleanup -s & brew prune
 
     # Install apps via brew cask
     - name: Install apps
@@ -40,6 +40,9 @@
         state: present
         update_homebrew: yes
       with_items: "{{ brew_cask_pkgs }}"
+
+    - name: Cleanup brew-casked old pkgs
+      shell: brew cask cleanup
 
     # Mac app store application via mas
     - name: Install Mac app store apps via mas
