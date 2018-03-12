@@ -4,36 +4,36 @@ brew_taps:
   - caskroom/fonts
 
 brew_pkgs:
-  - ag
-  - ansible
-  - asdf
-  - awscli
-  - certbot
-  - chromedriver
-  - coreutils
-  - direnv
-  - elinks
-  - ffmpeg
-  - fish
-  - flake8
-  - fzf
-  - ghq
-  - git
-  - gnupg
-  - gradle
-  - httpie
-  - hub
-  - hugo
-  - jq
-  - mas
-  - maven
-  - neovim
-  - peco
-  - shyiko/ktlint/ktlint
-  - terminal-notifier
-  - tig
-  - watch
-  - wget
+  - {name: ag, state: latest}
+  - {name: ansible, state: latest}
+  - {name: asdf, state: latest}
+  - {name: awscli, state: latest}
+  - {name: certbot, state: latest}
+  - {name: chromedriver, state: latest}
+  - {name: coreutils, state: latest}
+  - {name: direnv, state: latest}
+  - {name: elinks, state: latest}
+  - {name: ffmpeg, state: latest}
+  - {name: fish, state: latest}
+  - {name: flake8, state: latest}
+  - {name: fzf, state: latest}
+  - {name: ghq, state: latest}
+  - {name: git, state: latest}
+  - {name: gnupg, state: latest}
+  - {name: gradle, state: latest}
+  - {name: httpie, state: latest}
+  - {name: hub, state: latest}
+  - {name: hugo, state: latest}
+  - {name: jq, state: latest}
+  - {name: mas, state: latest}
+  - {name: maven, state: latest}
+  - {name: neovim, state: latest}
+  - {name: peco, state: latest}
+  - {name: shyiko/ktlint/ktlint, state: latest}
+  - {name: terminal-notifier, state: latest}
+  - {name: tig, state: latest}
+  - {name: watch, state: latest}
+  - {name: wget, state: latest}
 
 brew_cask_pkgs:
   - adobe-creative-cloud
