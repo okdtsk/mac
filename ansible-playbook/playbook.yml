@@ -117,7 +117,7 @@
         mode: 0755
 
     - name: Put dotfiles
-      template:
+      copy:
         src: "{{ item.src }}"
         dest: "~/.{{ item.path }}"
         mode: 0644
