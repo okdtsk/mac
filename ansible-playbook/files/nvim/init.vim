@@ -1,9 +1,13 @@
+" *****
+" * ref) https://github.com/kristijanhusak/neovim-config/blob/master/init.vim
+
 " === Plugins {{{
 call plug#begin()
 Plug 'w0rp/ale'
 Plug 'davidhalter/jedi-vim', {'for': 'python'}
 Plug 'dracula/vim', {'as': 'dracula'}
 Plug 'tpope/vim-fugitive'
+Plug 'ntpeters/vim-better-whitespace'
 call plug#end()
 " }}}
 
@@ -102,15 +106,6 @@ cnoreabbrev f find
 cnoreabbrev F find
 
 " === Functions
-function! StripTrailingWhitespaces()
-  if &modifiable
-    let l:l = line(".")
-    let l:c = col(".")
-    %s/\s\+$//e
-    call cursor(l:l, l:c)
-  endif
-endfunction
-
 function! Search(...)
   let default = a:0 > 0 ? expand('<cword>') : ''
   let term = input('Search for: ', default)
@@ -132,3 +127,10 @@ endfunction
 " *** Plugin configurations
 " === jedi-vim "
 autocmd FileType python setlocal completeopt-=preview
+let g:jedi#force_py_version = 3
+
+" === vim-better-whitespace
+let g:better_whitespace_enabled=1
+let g:strip_whitespace_on_save=1
+let g:strip_whitelines_at_eof=1
+let g:show_spaces_that_precede_tabs=1
