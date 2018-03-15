@@ -103,6 +103,19 @@
         mode: 0755
       with_filetree: fish/conf.user/
 
+    - name: Put nvim configs
+      copy:
+        src: "{{ item.src }}"
+        dest: "~/.config/nvim/{{ item.path }}"
+        mode: 0644
+      with_filetree: nvim/
+
+    - name: Create nvim backup dir
+      file:
+        path: ~/.config/nvim/backup
+        state: directory
+        mode: 0755
+
     - name: Put dotfiles
       template:
         src: "{{ item.src }}"
