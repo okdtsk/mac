@@ -71,6 +71,7 @@ brew_cask_pkgs:
   - spotify
   - telegram
   - the-unarchiver
+  - trailer
   - vagrant
   - vcv-rack
   - virtualbox
