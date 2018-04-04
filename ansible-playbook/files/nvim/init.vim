@@ -8,6 +8,7 @@ Plug 'davidhalter/jedi-vim', {'for': 'python'}
 Plug 'dracula/vim', {'as': 'dracula'}
 Plug 'tpope/vim-fugitive'
 Plug 'ntpeters/vim-better-whitespace'
+Plug 'google/yapf', {'rtp': 'plugins/vim', 'for': 'python'}
 call plug#end()
 " }}}
 
