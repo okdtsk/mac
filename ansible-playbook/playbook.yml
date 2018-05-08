@@ -25,8 +25,8 @@
     # Install cmd tool pkgs via brew
     - name: Install packages
       homebrew:
-        name: "{{ item.name }}"
-        state: "{{ item.state }}"
+        name: "{{ item }}"
+        state: present
         update_homebrew: yes
       with_items: "{{ brew_pkgs }}"
 
